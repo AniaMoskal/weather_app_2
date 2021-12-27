@@ -1,9 +1,7 @@
-
-
 body{
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    padding-top: 10px;
+    padding-top: 5px;
     text-transform: uppercase;
     
 
@@ -18,11 +16,37 @@ body{
 }
 
 .main {
-    font-size: 35px;
+    font-size: 23px;
     color: #BAD8FC;
     display: block;
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
+    text-align: center;
+}
+
+.maindata
+{
+    margin: -40px 0px 0px 0px;
+}
+
+.adds {
+    font-size: 11px;
+    color: #BAD8FC;
+    text-align: left;
+    font-weight: 800;
+}
+
+
+.feelstemprature {
+    color: #B38495;
+   
+}
+.addstwo {
+    margin: 0px 0px 0px 20px;
+}
+
+.secondary {
+    padding: 120px 0px 0px 0px;
 }
 
 .cityname {
@@ -31,6 +55,8 @@ body{
     display: block;
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
+    text-align: center;
+    margin: 0px 0px 0px 0px;
 }
 
 .currentweather {
@@ -41,6 +67,7 @@ body{
 
 .currenttemprature{
     color: #EBB9CB;
+    margin: 0px 0px 0px 0px;
 }
 
 .feelstemprature {
@@ -48,10 +75,10 @@ body{
 }
 
 .bigicon {
-    font-size: 80px;
+    font-size: 60px;
     color: #FCFCD4;
     text-align: center;
-    margin: 30px 0px 30px 10px;
+    margin: 30px 0px 30px 0px;
     
 }
 
@@ -61,7 +88,8 @@ body{
     display: block;
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    margin: 0px 0px 0px 12px;
+    margin: 150px 0px 0px 12px;
+    text-align: left;
 }
 
 .temperaturechoose {
@@ -69,10 +97,11 @@ body{
     background-color: #FCFCD4;
     border-color: #FCFCD4;
     font-weight: 900;
-    width: 50px;
+    width: 30px;
     box-shadow: 2px 2px 1px #aaaaaa;
-    margin: 50px 0px 10px 10px;
+    margin: 10px -220px 10px 220px;
     border-radius: 4px;
+    font-size: 12px;
 }
  
 .temperaturechoose:hover {
@@ -84,6 +113,16 @@ body{
     box-shadow: 4px 4px 3px #aaaaaa;
 
 }
+
+.results{
+    color: #EBB9CB;
+}
+
+.form-control{
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
 
 hr {
    display: block;
@@ -156,6 +195,8 @@ hr {
     font-weight: 900;
     width: 115px;
     box-shadow: 5px 5px 2px #aaaaaa;
+    font-size: 13px;
+    text-transform: uppercase;
 }
 
 .btn-light:hover 
@@ -166,6 +207,8 @@ hr {
     font-weight: 900;
     transition-timing-function: ease-in-out;
     box-shadow: 10px 10px 5px #aaaaaa;
+    font-size: 13px;
+    text-transform: uppercase;
     
 }
 
