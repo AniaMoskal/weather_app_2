@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="src/style.css" />
+    <link rel="stylesheet" href="src/css/weather-icons.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/39333be9ee.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="card" style="width: 36rem;">
+        <div class="card-body">
+            <div class="row">
+                 <section class="col-12 main">
+                    <button class="temperaturechoose" id="celcius">C</button>
+                    <button class="temperaturechoose" id="fahrenheit">F</button>
+                    <div class="maindata">
+                        <div class="cityname" id="city">
+                            BERLIN
+                        </div>
+                        <div id="day">
+                            FRIDAY
+                        </div>
+                        <div>
+                           <span class="currentweather" id="currentweather"> RAINY </span>
+                         </div>
+                     <!--<img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weathericon"class="bigicon" id="bigicon"> <br />-->
+                         <i class="wi wi-owm-232 bigicon" id="bigicon"></i>
+                         <div>
+                            <span class="currenttemprature" id="currenttemprature">10</span>
+                            <span class="currenttemprature" id="temperaturesymbol">°C</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <hr>
+            <div class="row">
+            <section class="col-3 adds">
+                <div> <span>Time</span> <span id="time" class="time results"> 16:00 </span></div>
+                <div class="feelslike"> FEELS 
+                    <span class="feelstemprature results" id="feelstemprature">5</span>
+                    <span class="feelstemprature results" id="feelstempraturesymbol">°C</span>
+            </section>
+            <section class="col-3 adds">
+                <div>sunrise <span id="sunrise" class="results">30%</span></div>
+                <div>sunset <span id="sunset" class="results">30%</span></div>
+            </section>
+            <section class="col-3 adds">
+                <div class="feelslike">Min temp
+                    <span id="mintemp" class="results">2</span>
+                    <span class="results" id="temperatureminsymbol">°C</span>
+                </div>
+                <div class="feelslike">Max temp
+                    <span id="maxtemp" class="results">4</span>
+                    <span class="results" id="temperaturemaxsymbol">°C</span>
+                </div>
+            </section>
+           <section class="col-3 adds">
+                <div class="addstwo">wind <span id="wind" class="results">100 </span><span class="results"> km/h</span></div>
+                <div class="addstwo">humidity <span id="humidity" class="results">95</span> <span class="results"> %</span></div>
+           </section>
+            </div>
+            <hr>
+            <section class="nextdays">
+            <div class="row row-cols-5">
+                <div class="col">
+                    <div class="card smallweathercard" style="width: 100px;">
+                        <div class="card-body">
+                            <div class="smallday">
+                                SAT
+                            </div>
+                             <div class="smallweather">
+                                SUNNY
+                            </div>
+                            <span class="smallicon">
+                            <i class="fas fa-sun"></i></span>
+                            <div class="smalltemp">
+                                <span class="warmest"> 20°C </span> <span class="coldest"> 15°C </span> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card smallweathercard" style="width: 100px;">
+                        <div class="card-body">
+                            <div class="smallday">
+                                SUN
+                            </div>
+                             <div class="smallweather">
+                                RAINY
+                            </div>
+                            <span class="smallicon">
+                            <i class="fas fa-cloud-rain"></i></span>
+                            <div class="smalltemp">
+                                <span class="warmest"> 20°C </span> <span class="coldest"> 15°C </span> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card smallweathercard" style="width: 100px;">
+                        <div class="card-body">
+                            <div class="smallday">
+                                MON
+                            </div>
+                             <div class="smallweather">
+                                SNOWY
+                            </div>
+                            <span class="smallicon">
+                            <i class="fas fa-cloud-meatball"></i></span>
+                            <div class="smalltemp">
+                                <span class="warmest"> 20°C </span> <span class="coldest"> 15°C </span> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card smallweathercard" style="width: 100px;">
+                        <div class="card-body">
+                            <div class="smallday">
+                                TUE
+                            </div>
+                             <div class="smallweather">
+                                SMOGY
+                            </div>
+                            <span class="smallicon">
+                            <i class="fas fa-smog"></i> </span>
+                            <div class="smalltemp">
+                                <span class="warmest"> 20°C </span> <span class="coldest"> 15°C </span> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card smallweathercard" style="width: 100px;">
+                        <div class="card-body">
+                            <div class="smallday">
+                                WED
+                            </div>
+                             <div class="smallweather">
+                                CLOUDY
+                            </div>
+                            <span class="smallicon">
+                            <i class="fas fa-cloud"></i></i> </span>
+                            <div class="smalltemp">
+                                <span class="warmest"> 20°C </span> <span class="coldest"> 15°C </span> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>   
+            <hr>
+            <form id="search-form">
+                <div class="row">
+                    <div class="col-6">
+                        <input type="search" class="form-control" placeholder="City" id="city-input" />
+                    </div>
+                    <div class="col-3">
+                        <input type="submit" value="search" class="btn btn-light col-3 w-100" />
+                    </div>
+                    <div class="col-3">
+                        <button class="btn btn-success w-100" id="current-location-button"> current </button>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+<div class="codedby">
+    <a class="codedbyref" href="https://github.com/AniaMoskal/weather_app.git" target="_blank">
+        Open-source code </a>
+    by Ania Moskal</div>
+<script src="src/app.js"></script>
+</body>
+</html>

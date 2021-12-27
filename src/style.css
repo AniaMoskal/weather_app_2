@@ -1,0 +1,212 @@
+
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    padding-top: 10px;
+    text-transform: uppercase;
+    
+
+}
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.card {
+    background: #1B1C1C;
+}
+
+.main {
+    font-size: 35px;
+    color: #BAD8FC;
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+.cityname {
+    font-size: 35px;
+    color: #BAD8FC;
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+.currentweather {
+    font-style: italic;
+    color: #113652;
+    background: #FCFCD4;
+}
+
+.currenttemprature{
+    color: #EBB9CB;
+}
+
+.feelstemprature {
+    color: #B38495;
+}
+
+.bigicon {
+    font-size: 80px;
+    color: #FCFCD4;
+    text-align: center;
+    margin: 30px 0px 30px 10px;
+    
+}
+
+.additionalinformation {
+    font-size: 11px;
+    color: #BAD8FC;
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    margin: 0px 0px 0px 12px;
+}
+
+.temperaturechoose {
+    color: #EBB9CB;
+    background-color: #FCFCD4;
+    border-color: #FCFCD4;
+    font-weight: 900;
+    width: 50px;
+    box-shadow: 2px 2px 1px #aaaaaa;
+    margin: 50px 0px 10px 10px;
+    border-radius: 4px;
+}
+ 
+.temperaturechoose:hover {
+    color: #FCFCD4;
+    background-color: #EBB9CB;
+    border-color: #FCFCD4;
+    font-weight: 900;
+    transition-timing-function: ease-in-out;
+    box-shadow: 4px 4px 3px #aaaaaa;
+
+}
+
+hr {
+   display: block;
+   background-color: #FCFCD4; 
+   height: 40px; 
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.nextdays{
+    margin-left: -10px;
+}
+
+.smallweathercard{
+    background: #1B1C1C;
+    border-color: #1B1C1C;
+}
+
+.smallday {
+    color: #BAD8FC;
+    font-size: 13px;
+    text-align: center;
+    padding: 0 0 0 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+.smallweather {
+    color: #00C6B6;
+    font-size: 13px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    color: #113652;
+    background: #FCFCD4;
+}
+
+.smallicon{
+    font-size: 40px;
+    color: #FCFCD4;
+    text-align: center;
+    padding: 15px 0 0 15px;
+}
+
+.smalltemp {
+    color: #EBB9CB;
+    font-size: 13px;
+    text-align: center;
+    padding: 15px 0 0 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+
+.smalltemp .warmest{
+    color: #EBB9CB;
+}
+
+.smalltemp .coldest{
+    color: #EBB9CB;
+    font-weight: 400;
+}
+
+
+.btn-light {
+    color: #EBB9CB;
+    background-color: #FCFCD4;
+    border-color: #FCFCD4;
+    font-weight: 900;
+    width: 115px;
+    box-shadow: 5px 5px 2px #aaaaaa;
+}
+
+.btn-light:hover 
+{
+    color: #FCFCD4;
+    background-color: #EBB9CB;
+    border-color: #FCFCD4;
+    font-weight: 900;
+    transition-timing-function: ease-in-out;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    
+}
+
+.btn-success {
+    color: #EBB9CB;
+    background-color: #FCFCD4;
+    border-color: #FCFCD4;
+    font-weight: 900;
+    width: 115px;
+    box-shadow: 5px 5px 2px #aaaaaa;
+}
+
+.btn-success:hover 
+{
+    color: #FCFCD4;
+    background-color: #EBB9CB;
+    border-color: #FCFCD4;
+    font-weight: 900;
+    transition-timing-function: ease-in-out;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    
+}
+
+.advice {
+    color: #EBB9CB;
+    text-align: left;
+    font-weight: 800;
+    font-size: small;
+}
+
+.codedby {
+    font-weight: 500;
+    font-size: 10px;
+    text-align: center;
+    margin-right : 375px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.codedbyref {
+    font-weight: 500;
+    font-size: 10px;
+    color: #EBB9CB;
+}
