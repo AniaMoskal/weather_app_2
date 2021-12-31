@@ -14,40 +14,14 @@ if (minutes < 10) {
 }
 timeElement.innerHTML = `${hours}:${minutes}`;
 
-// forecast
 
-function displayForecast(){
-  let forecastElement = document.querySelector("#nextdays");
-
-  let forecastHTML = `<div class="row row-cols-5">`;
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
-  days.forEach(function(day){
-    forecastHTML = forecastHTML + `
-                <div class="col">
-                    <div class="card smallweathercard" style="width: 100px;">
-                        <div class="card-body">
-                            <div class="smallday">
-                                ${day}
-                            </div>
-                             <div class="smallweather">
-                                SUNNY
-                            </div>
-                            <span class="smallicon">
-                            <i class="fas fa-sun"></i></span>
-                            <div class="smalltemp">
-                                <span class="warmest"> 20°C </span> <span class="coldest"> 15°C </span> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-  })
- 
-  forecastHTML = forecastHTML + `</div>`;
-  forecastElement.innerHTML = forecastHTML;
-
+// funtion for finding georgaphical coordinates of a city that is being searched. Needed for the forecats API
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "4e13aa90127904d13b6a4af59475dbf3";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`
+  axios.get(apiUrl).then(displayForecast);
 }
-
 // displaying a name of the city after a user submts the form
 // funtion for the weather condition that we mention in the function below
 function displayWeatherCondition(response)
@@ -87,7 +61,45 @@ celciusmaxTemperature = Math.round(response.data.main.temp_max);
   
 let iconElement = document.querySelector("#bigicon");
 iconElement.setAttribute("class", `wi wi-owm-${response.data.weather[0].id} bigicon`);
+
+getForecast(response.data.coord);
+
 }
+
+// forecast
+function displayForecast(response){
+  console.log(response.data.daily);
+  let forecastElement = document.querySelector("#nextdays");
+
+  let forecastHTML = `<div class="row row-cols-5">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
+  days.forEach(function(day){
+    forecastHTML = forecastHTML + `
+                <div class="col">
+                    <div class="card smallweathercard" style="width: 100px;">
+                        <div class="card-body">
+                            <div class="smallday">
+                                ${day}
+                            </div>
+                             <div class="smallweather">
+                                SUNNY
+                            </div>
+                            <span class="smallicon">
+                            <i class="fas fa-sun"></i></span>
+                            <div class="smalltemp">
+                                <span class="warmest"> 20°C </span> <span class="coldest"> 15°C </span> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+  })
+ 
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+
+}
+
 
 // function for the onload search for Berlin
 function searchCity(city) {
@@ -242,4 +254,3 @@ let fahrenheitTemperature = null;
 
 // calling a city on load 
 searchCity("Berlin");
-displayForecast();
