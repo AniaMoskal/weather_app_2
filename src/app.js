@@ -14,6 +14,39 @@ if (minutes < 10) {
 }
 timeElement.innerHTML = `${hours}:${minutes}`;
 
+// forecast
+
+function displayForecast(){
+  let forecastElement = document.querySelector("#nextdays");
+
+  let forecastHTML = `<div class="row row-cols-5">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
+  days.forEach(function(day){
+    forecastHTML = forecastHTML + `
+                <div class="col">
+                    <div class="card smallweathercard" style="width: 100px;">
+                        <div class="card-body">
+                            <div class="smallday">
+                                ${day}
+                            </div>
+                             <div class="smallweather">
+                                SUNNY
+                            </div>
+                            <span class="smallicon">
+                            <i class="fas fa-sun"></i></span>
+                            <div class="smalltemp">
+                                <span class="warmest"> 20°C </span> <span class="coldest"> 15°C </span> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+  })
+ 
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+
+}
 
 // displaying a name of the city after a user submts the form
 // funtion for the weather condition that we mention in the function below
@@ -46,7 +79,6 @@ function displayWeatherCondition(response)
     sunsetminutes = `0${sunsetminutes}`
   }
   sunsetElement.innerHTML = `${sunsethours}:${sunsetminutes}`;
-
 
 celciusTemperature = response.data.main.temp;
 celciusfeelslikeTemperature = Math.round(response.data.main.feels_like);
@@ -210,3 +242,4 @@ let fahrenheitTemperature = null;
 
 // calling a city on load 
 searchCity("Berlin");
+displayForecast();
