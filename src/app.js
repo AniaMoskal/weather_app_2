@@ -86,8 +86,8 @@ function displayForecast(response){
   // let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
   // days.forEach(function(day){
     forecast.forEach(function(forecastDay, index){
-      if (index < 5) {
-    forecastHTML = forecastHTML + `
+      if (index <=5 && index > 0) {
+        forecastHTML = forecastHTML + `
                 <div class="col">
                     <div class="card smallweathercard" style="width: 100px;">
                         <div class="card-body">
@@ -98,21 +98,20 @@ function displayForecast(response){
                                 ${forecastDay.weather[0].main}
                             </div>
                             <span>
-                            <i class="wi wi-owm-232 smallicon id="smallicon"></i></span>
+                            <i class="wi wi-owm-${forecastDay.weather[0].id} smallicon" id="smallicon"></i></span>
                             <div class="smalltemp">
                                 <span class="warmest"> ${Math.round(forecastDay.temp.max)}°C </span> <span class="coldest"> ${Math.round(forecastDay.temp.min)}°C </span> 
                             </div>
                         </div>
                     </div>
                 </div>
-            `;}
+            `;
+          }
   })
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 
- let smalliconElement = document.querySelector("#smallicon");
- smalliconElement.setAttribute("class", `wi wi-owm-${response.daily.weather[0].id} smallicon`);
 }
 
 
