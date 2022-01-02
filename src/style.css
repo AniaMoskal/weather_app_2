@@ -12,6 +12,7 @@ body{
 
 .card {
     background: #1B1C1C;
+    border-color: grey;
 }
 
 .main {
@@ -257,6 +258,7 @@ hr {
     margin-right : 375px;
     margin-top: 5px;
     margin-bottom: 5px;
+    color: #BAD8FC;
 }
 
 .codedbyref {
