@@ -116,10 +116,10 @@ function displayForecast(response)
   forecast4MaxTemperature = Math.round(forecast[4].temp.max);
   forecast5MaxTemperature = Math.round(forecast[5].temp.max);
   forecast1MinTemperature = Math.round(forecast[1].temp.min);
-  forecast2MinTemperature = Math.round(forecast[1].temp.min);
-  forecast3MinTemperature = Math.round(forecast[1].temp.min);
-  forecast4MinTemperature = Math.round(forecast[1].temp.min);
-  forecast5MinTemperature = Math.round(forecast[1].temp.min);
+  forecast2MinTemperature = Math.round(forecast[2].temp.min);
+  forecast3MinTemperature = Math.round(forecast[3].temp.min);
+  forecast4MinTemperature = Math.round(forecast[4].temp.min);
+  forecast5MinTemperature = Math.round(forecast[5].temp.min);
  
 }
 
@@ -368,35 +368,14 @@ function convertToCelciusSymbol(event)
   let temperaturemaxSymbolElement = document.querySelector("#temperaturemaxsymbol");
   temperaturemaxSymbolElement.innerHTML = "°C";
   // forecast1
-  let temperatureforecastElement = document.querySelector("#forecastmaxsymbol1");
-  temperatureforecastElement.innerHTML = "°C";
+for (let i = 1; i <=5; i++){
+  let temperatureForecastMaxElement = document.querySelector("#forecastmaxsymbol" + i);
+  let temperatureForecastMinElement = document.querySelector("#forecastminsymbol" + i);
 
-  let temperatureforecast2Element = document.querySelector("#forecastmaxsymbol2");
-  temperatureforecast2Element.innerHTML = "°C";
-
-  let temperatureforecast3Element = document.querySelector("#forecastmaxsymbol3");
-  temperatureforecast3Element.innerHTML = "°C";
-
-  let temperatureforecast4Element = document.querySelector("#forecastmaxsymbol4");
-  temperatureforecast4Element.innerHTML = "°C";
-
-  let temperatureforecast5Element = document.querySelector("#forecastmaxsymbol5");
-  temperatureforecast5Element.innerHTML = "°C";
-
-  let temperatureforecastmin1Element = document.querySelector("#forecastmaxsymbol1");
-  temperatureforecastmin1Element.innerHTML = "°C";
-
-  let temperatureforecastmin2Element = document.querySelector("#forecastmaxsymbol2");
-  temperatureforecastmin2Element.innerHTML = "°C";
-
-  let temperatureforecastmin3Element = document.querySelector("#forecastmaxsymbol3");
-  temperatureforecastmin3Element.innerHTML = "°C";
-
-  let temperatureforecastmin4Element = document.querySelector("#forecastmaxsymbol4");
-  temperatureforecastmin4Element.innerHTML = "°C";
-
-  let temperatureforecastmin5Element = document.querySelector("#forecastmaxsymbol5");
-  temperatureforecastmin5Element.innerHTML = "°C";
+  temperatureForecastMaxElement.innerHTML = "°C";
+  temperatureForecastMinElement.innerHTML = "°C";
+}
+ 
 }
 let celciussymbol = document.querySelector("#celcius");
 celciussymbol.addEventListener("click", convertToCelciusSymbol);
