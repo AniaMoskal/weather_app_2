@@ -66,38 +66,53 @@ getForecast(response.data.coord);
 
 }
 
+function formatDay(timestamp){
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day]; 
+}
+
 // forecast
 function displayForecast(response){
-  console.log(response.data.daily);
+  // 
+  let forecast = response.data.daily;
+ 
   let forecastElement = document.querySelector("#nextdays");
 
   let forecastHTML = `<div class="row row-cols-5">`;
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
-  days.forEach(function(day){
+  // it was used for fake data, now we are replacing it with the variable forecast 
+  // let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
+  // days.forEach(function(day){
+    forecast.forEach(function(forecastDay, index){
+      if (index < 5) {
     forecastHTML = forecastHTML + `
                 <div class="col">
                     <div class="card smallweathercard" style="width: 100px;">
                         <div class="card-body">
                             <div class="smallday">
-                                ${day}
+                                ${formatDay(forecastDay.dt)}
                             </div>
                              <div class="smallweather">
-                                SUNNY
+                                ${forecastDay.weather[0].main}
                             </div>
-                            <span class="smallicon">
-                            <i class="fas fa-sun"></i></span>
+                            <span>
+                            <i class="wi wi-owm-232 smallicon id="smallicon"></i></span>
                             <div class="smalltemp">
-                                <span class="warmest"> 20°C </span> <span class="coldest"> 15°C </span> 
+                                <span class="warmest"> ${Math.round(forecastDay.temp.max)}°C </span> <span class="coldest"> ${Math.round(forecastDay.temp.min)}°C </span> 
                             </div>
                         </div>
                     </div>
                 </div>
-            `;
+            `;}
   })
- 
+
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 
+ let smalliconElement = document.querySelector("#smallicon");
+ smalliconElement.setAttribute("class", `wi wi-owm-${response.daily.weather[0].id} smallicon`);
 }
 
 
