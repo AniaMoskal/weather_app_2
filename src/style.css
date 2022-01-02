@@ -34,6 +34,13 @@ body{
     font-weight: 800;
 }
 
+.addsone {
+    padding: 0px 0px 0px 15px;
+}
+
+.addsfour{
+    padding: 0px 0px 0px 18px;
+}
 
 .feelstemprature {
     color: #B38495;
@@ -178,11 +185,14 @@ hr {
 
 .smalltemp .warmest{
     color: #EBB9CB;
+    font-weight: 600;
+    font-size: 12px;
 }
 
 .smalltemp .coldest{
-    color: #EBB9CB;
-    font-weight: 400;
+    color: #BAD8FC;
+    font-weight: 600;
+    font-size: 12px;
 }
 
 
@@ -217,6 +227,8 @@ hr {
     font-weight: 900;
     width: 115px;
     box-shadow: 5px 5px 2px #aaaaaa;
+    text-transform: uppercase;
+    font-size: 13px;
 }
 
 .btn-success:hover 

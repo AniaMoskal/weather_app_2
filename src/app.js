@@ -14,7 +14,6 @@ if (minutes < 10) {
 }
 timeElement.innerHTML = `${hours}:${minutes}`;
 
-
 // funtion for finding georgaphical coordinates of a city that is being searched. Needed for the forecats API
 function getForecast(coordinates) {
   console.log(coordinates);
@@ -75,12 +74,10 @@ function formatDay(timestamp){
 }
 
 // forecast
-function displayForecast(response){
-  // 
+function displayForecast(response)
+{
   let forecast = response.data.daily;
- 
   let forecastElement = document.querySelector("#nextdays");
-
   let forecastHTML = `<div class="row row-cols-5">`;
   // it was used for fake data, now we are replacing it with the variable forecast 
   // let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
@@ -100,18 +97,30 @@ function displayForecast(response){
                             <span>
                             <i class="wi wi-owm-${forecastDay.weather[0].id} smallicon" id="smallicon"></i></span>
                             <div class="smalltemp">
-                                <span class="warmest"> ${Math.round(forecastDay.temp.max)}°C </span> <span class="coldest"> ${Math.round(forecastDay.temp.min)}°C </span> 
+                                <span class="coldest" id="forecastmin`+index+`"> ${Math.round(forecastDay.temp.min)}</span><span class="coldest" id="forecastminsymbol`+index+`">°C</span>
+                                <span class="warmest" id="forecastmax`+index+`"> ${Math.round(forecastDay.temp.max)}</span><span class="warmest" id="forecastmaxsymbol`+index+`">°C</span> 
                             </div>
                         </div>
                     </div>
                 </div>
-            `;
-          }
+        `;
+
+      }
   })
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-
+  forecast1MaxTemperature = Math.round(forecast[1].temp.max);
+  forecast2MaxTemperature = Math.round(forecast[2].temp.max);
+  forecast3MaxTemperature = Math.round(forecast[3].temp.max);
+  forecast4MaxTemperature = Math.round(forecast[4].temp.max);
+  forecast5MaxTemperature = Math.round(forecast[5].temp.max);
+  forecast1MinTemperature = Math.round(forecast[1].temp.min);
+  forecast2MinTemperature = Math.round(forecast[1].temp.min);
+  forecast3MinTemperature = Math.round(forecast[1].temp.min);
+  forecast4MinTemperature = Math.round(forecast[1].temp.min);
+  forecast5MinTemperature = Math.round(forecast[1].temp.min);
+ 
 }
 
 
@@ -151,11 +160,11 @@ function getCurrentLocation (event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
-// changing C to F on a clik (with fake data)
+// changing C to F on a clik 
 function convertToFahrenheit(event)
 {
   event.preventDefault();
-  let temperatureSymbolElement = document.querySelector("#temperaturesymbol");
+  /*let temperatureSymbolElement = document.querySelector("#temperaturesymbol");
     if (temperatureSymbolElement.innerHTML !== "°F"){
     let temperatureElement = document.querySelector("#currenttemprature");
     let currenttemprature = temperatureElement.innerHTML;
@@ -177,6 +186,61 @@ function convertToFahrenheit(event)
     let temperaturemax = temperaturemaxElement.innerHTML;
     temperaturemaxElement.innerHTML = Math.round((celciusmaxTemperature * 9) / 5 + 32);
   }
+  // forecast
+  let temperatureforecasatElement = document.querySelector("#id=forecastmax1"); //<--
+  if (temperatureSymbolElement.innerHTML !== "°F") {
+    let temperatureforecastmax = temperatureforecasatElement.innerHTML;
+    temperatureforecasatElement.innerHTML = Math.round((forecastclecius * 9) / 5 + 32); 
+  }*/
+
+
+
+
+  let temperatureSymbolElement = document.querySelector("#temperaturesymbol");
+  if (temperatureSymbolElement.innerHTML !== "°F"){
+    let temperatureElement = document.querySelector("#currenttemprature");
+    temperatureElement.innerHTML = Math.round((celciusTemperature * 9) / 5 + 32);
+
+    let temperaturefeelslikeElement = document.querySelector("#feelstemprature");
+    temperaturefeelslikeElement.innerHTML = Math.round((celciusfeelslikeTemperature * 9) / 5 + 32);
+
+    let temperatureminElement = document.querySelector("#mintemp");
+    temperatureminElement.innerHTML = Math.round((celciusminTemperature * 9) / 5 + 32);
+
+    let temperaturemaxElement = document.querySelector("#maxtemp");
+    temperaturemaxElement.innerHTML = Math.round((celciusmaxTemperature * 9) / 5 + 32);
+
+    let temperatureforecastElement = document.querySelector("#forecastmax1");
+    temperatureforecastElement.innerHTML = Math.round((forecast1MaxTemperature * 9) / 5 + 32); 
+
+    let temperatureforecast2Element = document.querySelector("#forecastmax2");
+    temperatureforecast2Element.innerHTML = Math.round((forecast2MaxTemperature * 9) / 5 + 32); 
+
+     let temperatureforecast3Element = document.querySelector("#forecastmax3");
+    temperatureforecast3Element.innerHTML = Math.round((forecast3MaxTemperature * 9) / 5 + 32); 
+
+     let temperatureforecast4Element = document.querySelector("#forecastmax4");
+    temperatureforecast4Element.innerHTML = Math.round((forecast4MaxTemperature * 9) / 5 + 32); 
+
+     let temperatureforecast5Element = document.querySelector("#forecastmax5");
+    temperatureforecast5Element.innerHTML = Math.round((forecast5MaxTemperature * 9) / 5 + 32); 
+
+    let temperatureforecastmin1Element = document.querySelector("#forecastmin1");
+    temperatureforecastmin1Element.innerHTML = Math.round((forecast1MinTemperature * 9) / 5 + 32); 
+
+    let temperatureforecastmin2Element = document.querySelector("#forecastmin2");
+    temperatureforecastmin2Element.innerHTML = Math.round((forecast2MinTemperature * 9) / 5 + 32); 
+
+    let temperatureforecastmin3Element = document.querySelector("#forecastmin3");
+    temperatureforecastmin3Element.innerHTML = Math.round((forecast3MinTemperature * 9) / 5 + 32); 
+
+    let temperatureforecastmin4Element = document.querySelector("#forecastmin4");
+    temperatureforecastmin4Element.innerHTML = Math.round((forecast4MinTemperature * 9) / 5 + 32); 
+
+    let temperatureforecastmin5Element = document.querySelector("#forecastmin5");
+    temperatureforecastmin5Element.innerHTML = Math.round((forecast5MinTemperature * 9) / 5 + 32); 
+  }
+
 }
 let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", convertToFahrenheit);
@@ -200,6 +264,38 @@ function convertToFahrenheitSymbol(event)
   let temperaturemaxSymbolElement = document.querySelector("#temperaturemaxsymbol");
   let temperaturemaxsymbol = temperaturemaxSymbolElement.innerHTML;
   temperaturemaxSymbolElement.innerHTML = "°F";
+  // forecast1 temp 
+  let temperatureforecastElement = document.querySelector("#forecastmaxsymbol1");
+  temperatureforecastElement.innerHTML = "°F";
+
+  let temperatureforecast2Element = document.querySelector("#forecastmaxsymbol2");
+  temperatureforecast2Element.innerHTML = "°F";
+
+  let temperatureforecast3Element = document.querySelector("#forecastmaxsymbol3");
+  temperatureforecast3Element.innerHTML = "°F";
+
+  let temperatureforecast4Element = document.querySelector("#forecastmaxsymbol4");
+  temperatureforecast4Element.innerHTML = "°F";
+
+  let temperatureforecast5Element = document.querySelector("#forecastmaxsymbol5");
+  temperatureforecast5Element.innerHTML = "°F";
+
+  let temperatureforecastmin1Element = document.querySelector("#forecastminsymbol1");
+  temperatureforecastmin1Element .innerHTML = "°F";
+
+   let temperatureforecastmin2Element = document.querySelector("#forecastminsymbol2");
+  temperatureforecastmin2Element .innerHTML = "°F";
+
+   let temperatureforecastmin3Element = document.querySelector("#forecastminsymbol3");
+  temperatureforecastmin3Element .innerHTML = "°F";
+
+   let temperatureforecastmin4Element = document.querySelector("#forecastminsymbol4");
+  temperatureforecastmin4Element .innerHTML = "°F";
+
+   let temperatureforecastmin5Element = document.querySelector("#forecastminsymbol5");
+  temperatureforecastmin5Element .innerHTML = "°F";
+
+
 }
 let fahrenheitsymbol = document.querySelector("#fahrenheit");
 fahrenheitsymbol.addEventListener("click", convertToFahrenheitSymbol);
@@ -209,27 +305,49 @@ function convertToCelcius(event)
 {
   event.preventDefault();
   let temperatureSymbolElement = document.querySelector("#temperaturesymbol");
-    if (temperatureSymbolElement.innerHTML !== "°C") {
-  let temperatureElement = document.querySelector("#currenttemprature");
-  let currenttemprature = temperatureElement.innerHTML;
-  temperatureElement.innerHTML = Math.round(celciusTemperature);}
+  if (temperatureSymbolElement.innerHTML !== "°C") {
+    let temperatureElement = document.querySelector("#currenttemprature");
+    temperatureElement.innerHTML = Math.round(celciusTemperature);}
   // feels like 
-  let temperaturefeelslikeElement = document.querySelector("#feelstemprature");
-    if (temperatureSymbolElement.innerHTML !== "°C") {
-  let feelstemprature = temperaturefeelslikeElement.innerHTML;
-  temperaturefeelslikeElement.innerHTML = celciusfeelslikeTemperature;}
+    let temperaturefeelslikeElement = document.querySelector("#feelstemprature");
+    temperaturefeelslikeElement.innerHTML = celciusfeelslikeTemperature;
   // min temp 
-  let temperatureminElement = document.querySelector("#mintemp");
-  if (temperatureSymbolElement.innerHTML !== "°C") {
-    let temperaturemin = temperatureminElement.innerHTML;
+    let temperatureminElement = document.querySelector("#mintemp");
     temperatureminElement.innerHTML = celciusminTemperature;
-  }
   // max temp 
-  let temperaturemaxElement = document.querySelector("#maxtemp");
-  if (temperatureSymbolElement.innerHTML !== "°C") {
-    let temperaturemax = temperaturemaxElement.innerHTML;
+    let temperaturemaxElement = document.querySelector("#maxtemp");
     temperaturemaxElement.innerHTML = celciusmaxTemperature;
-  }
+  // forecast1
+    let temperatureforecastElement = document.querySelector("#forecastmax1");
+    temperatureforecastElement.innerHTML = forecast1MaxTemperature;
+
+    let temperatureforecast2Element = document.querySelector("#forecastmax2");
+    temperatureforecast2Element.innerHTML = forecast2MaxTemperature;
+
+    let temperatureforecast3Element = document.querySelector("#forecastmax3");
+    temperatureforecast3Element.innerHTML = forecast3MaxTemperature;
+
+    let temperatureforecast4Element = document.querySelector("#forecastmax4");
+    temperatureforecast4Element.innerHTML = forecast4MaxTemperature;
+
+    let temperatureforecast5Element = document.querySelector("#forecastmax5");
+    temperatureforecast5Element.innerHTML = forecast5MaxTemperature;
+
+    let temperatureforecastmin1Element = document.querySelector("#forecastmin1");
+    temperatureforecastmin1Element.innerHTML = forecast1MinTemperature;
+
+    let temperatureforecastmin2Element = document.querySelector("#forecastmin2");
+    temperatureforecastmin2Element.innerHTML = forecast2MinTemperature;
+
+    let temperatureforecastmin3Element = document.querySelector("#forecastmin3");
+    temperatureforecastmin3Element.innerHTML = forecast3MinTemperature;
+    
+    let temperatureforecastmin4Element = document.querySelector("#forecastmin4");
+    temperatureforecastmin4Element.innerHTML = forecast4MinTemperature;
+
+    let temperatureforecastmin5Element = document.querySelector("#forecastmin5");
+    temperatureforecastmin5Element.innerHTML = forecast5MinTemperature;
+  
 }
 let celcius = document.querySelector("#celcius");
 celcius.addEventListener("click", convertToCelcius);
@@ -239,20 +357,46 @@ function convertToCelciusSymbol(event)
 {
   event.preventDefault();
   let temperatureSymbolElement = document.querySelector("#temperaturesymbol");
-  let temperaturesymbol = temperatureSymbolElement.innerHTML;
   temperatureSymbolElement.innerHTML = "°C";
   // feels like
   let temperaturefeelslikeSymbolElement = document.querySelector("#feelstempraturesymbol");
-  let feelstempraturesymbol = temperaturefeelslikeSymbolElement.innerHTML;
   temperaturefeelslikeSymbolElement.innerHTML = "°C";
   // min temp 
   let temperatureminSymbolElement = document.querySelector("#temperatureminsymbol");
-  let temperatureminsymbol = temperatureminSymbolElement.innerHTML;
   temperatureminSymbolElement.innerHTML = "°C";
   //
   let temperaturemaxSymbolElement = document.querySelector("#temperaturemaxsymbol");
-  let temperaturemaxsymbol = temperaturemaxSymbolElement.innerHTML;
   temperaturemaxSymbolElement.innerHTML = "°C";
+  // forecast1
+  let temperatureforecastElement = document.querySelector("#forecastmaxsymbol1");
+  temperatureforecastElement.innerHTML = "°C";
+
+  let temperatureforecast2Element = document.querySelector("#forecastmaxsymbol2");
+  temperatureforecast2Element.innerHTML = "°C";
+
+  let temperatureforecast3Element = document.querySelector("#forecastmaxsymbol3");
+  temperatureforecast3Element.innerHTML = "°C";
+
+  let temperatureforecast4Element = document.querySelector("#forecastmaxsymbol4");
+  temperatureforecast4Element.innerHTML = "°C";
+
+  let temperatureforecast5Element = document.querySelector("#forecastmaxsymbol5");
+  temperatureforecast5Element.innerHTML = "°C";
+
+  let temperatureforecastmin1Element = document.querySelector("#forecastmaxsymbol1");
+  temperatureforecastmin1Element.innerHTML = "°C";
+
+  let temperatureforecastmin2Element = document.querySelector("#forecastmaxsymbol2");
+  temperatureforecastmin2Element.innerHTML = "°C";
+
+  let temperatureforecastmin3Element = document.querySelector("#forecastmaxsymbol3");
+  temperatureforecastmin3Element.innerHTML = "°C";
+
+  let temperatureforecastmin4Element = document.querySelector("#forecastmaxsymbol4");
+  temperatureforecastmin4Element.innerHTML = "°C";
+
+  let temperatureforecastmin5Element = document.querySelector("#forecastmaxsymbol5");
+  temperatureforecastmin5Element.innerHTML = "°C";
 }
 let celciussymbol = document.querySelector("#celcius");
 celciussymbol.addEventListener("click", convertToCelciusSymbol);
@@ -263,8 +407,18 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 
 // making the button change the tempatyre only once when clicked 
 let celciusTemperature = null; 
-let celciusfeelslikeTemperature = null ;
+let celciusfeelslikeTemperature = null;
 let fahrenheitTemperature = null;
+let forecast1MaxTemperature = null;
+let forecast2MaxTemperature = null;
+let forecast3MaxTemperature = null;
+let forecast4MaxTemperature = null;
+let forecast5MaxTemperature = null;
+let forecast1MinTemperature = null;
+let forecast2MinTemperature = null;
+let forecast3MinTemperature = null;
+let forecast4MinTemperature = null;
+let forecast5MinTemperature = null;
 
 // calling a city on load 
 searchCity("Berlin");
